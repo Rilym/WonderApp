@@ -54,9 +54,6 @@ const Landing = () => {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:text-left flex flex-col lg:flex-row items-center">
                     <div className="w-full lg:w-3/5">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-blue-100 font-medium text-sm mb-6 animate-fade-in-up">
-                            <Star className="h-4 w-4 text-yellow-400" /> #1 Travel Booking Platform in Indonesia
-                        </div>
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
                             Explore the World <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
