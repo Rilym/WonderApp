@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import '../App.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { ShoppingCart, User, LogOut, Map, Menu, X } from 'lucide-react';
@@ -19,20 +20,20 @@ const Navbar = () => {
     const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     const closeMenu = () => setIsMobileMenuOpen(false);
 
+
     return (
         <nav className="bg-white shadow-sm sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16 items-center">
-                    <div className="flex items-center">
-                        <Link to="/" onClick={closeMenu} className="flex items-center gap-2 text-2xl font-bold text-blue-600">
+                    <div className="custom-font">
+                        <Link to="/" onClick={() => {closeMenu(); window.scrollTo({ top:0, behavior: 'smooth'});}} className="custom-font gap-2 text-3xl font-bold text-blue-600">
                             WonderApp
                         </Link>
                     </div>
-                    
+
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-8">
-                        <Link to="/" className="text-gray-600 hover:text-blue-600 transition">Home</Link>
-                        <Link to="/destinations" className="text-gray-600 hover:text-blue-600 transition">Destinations</Link>
+                        <Link to="/destinations" className="text-gray-600 hover:text-blue-600 font-medium transition">Destinations</Link>
                         
                         {user ? (
                             <div className="flex items-center space-x-6 border-l pl-6">

@@ -182,3 +182,13 @@
     border-right-color: var(--border);
   }
 }
+
+.custom-font{
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings:
+    "SOFT" 0,
+    "WONK" 0;
+}

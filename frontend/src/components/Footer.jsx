@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
+import '../App.css';
 
 const Footer = () => {
     return (
@@ -9,11 +10,13 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     
                     {/* Brand & Description */}
-                    <div className="space-y-6">
-                        <Link to="/" className="flex items-center gap-2 text-white">
-                            <span className="font-extrabold text-2xl tracking-tight">Wonder<span className="text-blue-500">App</span></span>
+                    <div className="custom-font">
+                        <Link to="/" className="flex items-center gap-2 text-white" onClick={() =>{
+                            window.scrollTo({top:0, behavior: 'smooth'})
+                        }}>
+                            <span className="custom-font font-extrabold text-3xl tracking-tight">Wonder<span className="custom-font text-blue-500">App</span></span>
                         </Link>
-                        <p className="text-gray-400 leading-relaxed">
+                        <p className="text-gray-400 font-medium leading-relaxed">
                             The best tourist ticket booking platform in Indonesia. We offer convenience, security, and comfort for every holiday travel plan.
                         </p>
                         <div className="flex gap-4">
