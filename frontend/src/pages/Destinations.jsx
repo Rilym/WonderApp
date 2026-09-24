@@ -4,6 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { MapPin, Search, Filter } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import api from '../lib/api';
 
 const Destinations = () => {
     const { user } = useContext(AuthContext);
@@ -29,7 +30,7 @@ const Destinations = () => {
         setLoading(true);
         try {
             const query = new URLSearchParams(searchParams).toString();
-            const res = await axios.get(`/api/destinations?${query}`);
+            const res = await api.get(`/api/destinations?${query}`);
             setDestinations(res.data.data);
             setPagination(res.data.pagination);
             setLoading(false);
