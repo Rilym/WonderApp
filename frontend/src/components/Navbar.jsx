@@ -27,7 +27,7 @@ const Navbar = () => {
                 <div className="flex justify-between h-16 items-center">
                     <div className="custom-font">
                         <Link to="/" onClick={() => {closeMenu(); window.scrollTo({ top:0, behavior: 'smooth'});}} className="custom-font gap-2 text-3xl font-bold text-blue-600">
-                            WonderApp
+                            WanderApp
                         </Link>
                     </div>
 

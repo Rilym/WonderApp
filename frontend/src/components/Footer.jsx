@@ -14,7 +14,7 @@ const Footer = () => {
                         <Link to="/" className="flex items-center gap-2 text-white" onClick={() =>{
                             window.scrollTo({top:0, behavior: 'smooth'})
                         }}>
-                            <span className="custom-font font-extrabold text-3xl tracking-tight">Wonder<span className="custom-font text-blue-500">App</span></span>
+                            <span className="custom-font font-extrabold text-3xl tracking-tight">Wander<span className="custom-font text-blue-500">App</span></span>
                         </Link>
                         <p className="text-gray-400 font-medium leading-relaxed">
                             The best tourist ticket booking platform in Indonesia. We offer convenience, security, and comfort for every holiday travel plan.
@@ -87,7 +87,7 @@ const Footer = () => {
                 {/* Bottom Footer */}
                 <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-gray-500 text-sm">
-                        &copy; {new Date().getFullYear()} WonderApp. All rights reserved.
+                        &copy; {new Date().getFullYear()} WanderApp. All rights reserved.
                     </p>
                     <div className="flex items-center gap-2">
                         <span className="text-gray-500 text-sm">Secure Payment:</span>
