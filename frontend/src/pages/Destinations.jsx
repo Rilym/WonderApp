@@ -30,7 +30,7 @@ const Destinations = () => {
         setLoading(true);
         try {
             const query = new URLSearchParams(searchParams).toString();
-            const res = await api.get(`/api/destinations?${query}`);
+            const res = await api.get(`/destinations?${query}`);
             setDestinations(res.data.data);
             setPagination(res.data.pagination);
             setLoading(false);
