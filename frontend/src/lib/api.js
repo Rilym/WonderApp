@@ -12,5 +12,7 @@ api.interceptors.request.use((config) => {
     }
     return config;
 });
+console.log("URL dari env:", import.meta.env.VITE_API_BASE_URL);
+console.log("Seluruh env:", import.meta.env);
 
 export default api;
