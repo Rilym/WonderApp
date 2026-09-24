@@ -9,5 +9,9 @@ export default defineConfig({
       '/api': 'http://localhost:5000',
       '/uploads': 'http://localhost:5000'
     }
+  },
+  define: {
+    // Memaksa injeksi nilai dari proses Node.js Vercel ke dalam Vite
+    'import.meta.env.VITE_API_BASE_URL': JSON.stringify(process.env.VITE_API_BASE_URL || '')
   }
 })

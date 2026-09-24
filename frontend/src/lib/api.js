@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const baseURL = import.meta.env.VITE_API_BASE_URL || 'URL_KOSONG_TOLONG_CEK_VERCEL'
+
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || '',
+    baseURL: baseURL,
 });
 
 // Automatically attach token to every request
@@ -12,7 +14,5 @@ api.interceptors.request.use((config) => {
     }
     return config;
 });
-console.log("URL dari env:", import.meta.env.VITE_API_BASE_URL);
-console.log("Seluruh env:", import.meta.env);
 
 export default api;
