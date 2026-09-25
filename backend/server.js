@@ -24,11 +24,11 @@ const path = require('path');
 // Serve static files from uploads folder
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use('/api/auth', authRoutes);
-app.use('/api/destinations', destinationRoutes);
-app.use('/api/cart', cartRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/admin', adminRoutes);
+app.use('/auth', authRoutes);
+app.use('/destinations', destinationRoutes);
+app.use('/cart', cartRoutes);
+app.use('/orders', orderRoutes);
+app.use('/admin', adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
