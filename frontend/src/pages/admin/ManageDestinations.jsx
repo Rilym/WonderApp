@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import api from '../../lib/api';
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -41,7 +42,7 @@ const ManageDestinations = () => {
     const fetchDestinations = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('/api/admin/destinations', {
+            const res = await api.get('/api/admin/destinations', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setDestinations(res.data.data);
@@ -88,11 +89,11 @@ const ManageDestinations = () => {
 
         try {
             if (formData.id) {
-                await axios.put(`/api/destinations/${formData.id}`, data, {
+                await api.put(`/api/destinations/${formData.id}`, data, {
                     headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
                 });
             } else {
-                await axios.post('/api/destinations', data, {
+                await api.post('/api/destinations', data, {
                     headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
                 });
             }
@@ -110,7 +111,7 @@ const ManageDestinations = () => {
         if (!window.confirm('Are you sure you want to delete this destination?')) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`/api/destinations/${id}`, {
+            await api.delete(`/api/destinations/${id}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             toast.success('Destination deleted successfully');

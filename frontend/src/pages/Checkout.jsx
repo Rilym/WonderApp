@@ -22,7 +22,7 @@ const Checkout = () => {
     const fetchCart = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('/api/cart', {
+            const res = await api.get('/api/cart', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setCartItems(res.data);
@@ -38,7 +38,7 @@ const Checkout = () => {
         setLoading(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.post('/api/orders/checkout', {}, {
+            const res = await api.post('/api/orders/checkout', {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setOrderId(res.data.orderId);

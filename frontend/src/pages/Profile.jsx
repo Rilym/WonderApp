@@ -19,7 +19,7 @@ const Profile = () => {
     const fetchOrders = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('/api/orders/history', {
+            const res = await api.get('/api/orders/history', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setOrders(res.data);

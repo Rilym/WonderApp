@@ -21,7 +21,7 @@ const Cart = () => {
     const fetchCart = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('/api/cart', {
+            const res = await api.get('/api/cart', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setCartItems(res.data);
@@ -35,7 +35,7 @@ const Cart = () => {
     const handleRemove = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`/api/cart/${id}`, {
+            await api.delete(`/api/cart/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setCartItems(cartItems.filter(item => item.id !== id));

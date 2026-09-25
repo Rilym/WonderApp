@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
+import api from '../../lib/api';
 
 const AdminDashboard = () => {
     const { user } = useContext(AuthContext);
@@ -15,8 +16,8 @@ const AdminDashboard = () => {
                 const config = { headers: { Authorization: `Bearer ${token}` } };
                 
                 const [statsRes, ordersRes] = await Promise.all([
-                    axios.get('/api/admin/stats', config),
-                    axios.get('/api/admin/orders', config)
+                    api.get('/api/admin/stats', config),
+                    api.get('/api/admin/orders', config)
                 ]);
 
                 setStats(statsRes.data);

@@ -18,7 +18,7 @@ const ManageAdmins = () => {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('/api/admin/users', {
+            const res = await api.get('/api/admin/users', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             // Filter to show only admins and superadmins
@@ -34,7 +34,7 @@ const ManageAdmins = () => {
         if (!window.confirm("Are you sure you want to revoke this admin's rights? (User will be deleted)")) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`/api/admin/users/${id}`, {
+            await api.delete(`/api/admin/users/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             fetchUsers();
@@ -47,7 +47,7 @@ const ManageAdmins = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
-            await axios.post('/api/admin/users', formData, {
+            await api.post('/api/admin/users', formData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setIsModalOpen(false);

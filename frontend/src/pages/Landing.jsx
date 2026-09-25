@@ -17,7 +17,7 @@ const Landing = () => {
         // Fetch a few top destinations for the landing page
         const fetchDestinations = async () => {
             try {
-                const res = await axios.get('/api/destinations?limit=3');
+                const res = await api.get('/api/destinations?limit=3');
                 if (res.data && res.data.data) {
                     setFeaturedDestinations(res.data.data);
                 }
