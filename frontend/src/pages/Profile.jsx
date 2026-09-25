@@ -19,7 +19,7 @@ const Profile = () => {
     const fetchOrders = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await api.get('/orders/history', {
+            const res = await api.get('/api/orders/history', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setOrders(res.data);
@@ -88,7 +88,7 @@ const Profile = () => {
                                         <p className="font-bold text-blue-600 text-lg">Rp {parseFloat(order.total_amount).toLocaleString('id-ID')}</p>
                                     </div>
                                     <a 
-                                        href={`/orders/${order.id}/pdf`}
+                                        href={`/api/orders/${order.id}/pdf`}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="bg-blue-50 text-blue-600 p-3 rounded-xl hover:bg-blue-100 hover:-translate-y-1 transition shadow-sm"

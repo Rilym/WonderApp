@@ -42,7 +42,7 @@ const ManageDestinations = () => {
     const fetchDestinations = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await api.get('/admin/destinations', {
+            const res = await api.get('/api/admin/destinations', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setDestinations(res.data.data);
@@ -89,11 +89,11 @@ const ManageDestinations = () => {
 
         try {
             if (formData.id) {
-                await api.put(`/destinations/${formData.id}`, data, {
+                await api.put(`/api/destinations/${formData.id}`, data, {
                     headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
                 });
             } else {
-                await api.post('/destinations', data, {
+                await api.post('/api/destinations', data, {
                     headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
                 });
             }
@@ -111,7 +111,7 @@ const ManageDestinations = () => {
         if (!window.confirm('Are you sure you want to delete this destination?')) return;
         try {
             const token = localStorage.getItem('token');
-            await api.delete(`/destinations/${id}`, {
+            await api.delete(`/api/destinations/${id}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             toast.success('Destination deleted successfully');
