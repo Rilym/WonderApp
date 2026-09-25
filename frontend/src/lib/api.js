@@ -8,7 +8,7 @@ const isProduction = import.meta.env.MODE === 'production';
 
 // Tentukan URL berdasarkan mode
 const baseURL = isProduction 
-  ? 'https://wanderapp.onrender.com/api' // URL Render untuk Vercel
+  ? 'https://wonderapp.onrender.com/api' // URL Render untuk Vercel
   : 'http://localhost:5000/api';         // URL Localhost untuk komputer Anda
 
 const api = axios.create({
