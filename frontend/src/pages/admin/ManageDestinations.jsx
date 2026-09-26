@@ -128,9 +128,9 @@ const ManageDestinations = () => {
         let previews = [];
         if (dest.images) {
             const parsed = typeof dest.images === 'string' ? JSON.parse(dest.images) : dest.images;
-            previews = parsed.map(img => `${img}`);
+            previews = parsed.map(img => `https://wonderapp.onrender.com${img}`);
         } else if (dest.image_url) {
-            previews = [`${dest.image_url}`];
+            previews = [`https://wonderapp.onrender.com${dest.image_url}`];
         }
         
         setImagePreviews(previews);
@@ -176,7 +176,7 @@ const ManageDestinations = () => {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <div className="flex items-center">
                                         <div className="h-10 w-10 flex-shrink-0">
-                                            <img className="h-10 w-10 rounded-lg object-cover" src={dest.image_url ? `${dest.image_url}` : 'https://via.placeholder.com/150'} alt="" />
+                                            <img className="h-10 w-10 rounded-lg object-cover" src={dest.image_url ? `https://wonderapp.onrender.com${dest.image_url}` : 'https://via.placeholder.com/150'} alt="" />
                                         </div>
                                         <div className="ml-4">
                                             <div className="text-sm font-medium text-gray-900">{dest.name}</div>
