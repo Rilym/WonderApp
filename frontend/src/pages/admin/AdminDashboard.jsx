@@ -16,8 +16,8 @@ const AdminDashboard = () => {
                 const config = { headers: { Authorization: `Bearer ${token}` } };
                 
                 const [statsRes, ordersRes] = await Promise.all([
-                    api.get('/admin/stats', config),
-                    api.get('/admin/orders', config)
+                    api.get('/api/admin/stats', config),
+                    api.get('/api/admin/orders', config)
                 ]);
 
                 setStats(statsRes.data);

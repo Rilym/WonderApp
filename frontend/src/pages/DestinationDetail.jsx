@@ -37,7 +37,7 @@ const DestinationDetail = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const destRes = await api.get(`/destinations/${id}`);
+                const destRes = await api.get(`/api/destinations/${id}`);
                 
                 // Parse images JSON if it exists
                 let destData = destRes.data;
@@ -51,7 +51,7 @@ const DestinationDetail = () => {
 
                 setDestination(destData);
                 
-                const revRes = await api.get(`/destinations/${id}/reviews`);
+                const revRes = await api.get(`/api/destinations/${id}/reviews`);
                 setReviews(revRes.data);
                 
                 setLoading(false);
@@ -90,7 +90,7 @@ const DestinationDetail = () => {
 
         try {
             const token = localStorage.getItem('token');
-            await api.post('/cart', 
+            await api.post('/api/cart', 
                 { destination_id: id, quantity, bookingDate },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -111,14 +111,14 @@ const DestinationDetail = () => {
         setSubmittingReview(true);
         try {
             const token = localStorage.getItem('token');
-            await api.post(`/destinations/${id}/reviews`, 
+            await api.post(`/api/destinations/${id}/reviews`, 
                 { rating, comment },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             toast.success("Review submitted successfully!");
             
             // Refresh reviews
-            const revRes = await api.get(`/destinations/${id}/reviews`);
+            const revRes = await api.get(`/api/destinations/${id}/reviews`);
             setReviews(revRes.data);
             setComment('');
         } catch (error) {
