@@ -22,7 +22,7 @@ const Checkout = () => {
     const fetchCart = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await api.get('/api/cart', {
+            const res = await api.get('/cart', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setCartItems(res.data);
@@ -38,7 +38,7 @@ const Checkout = () => {
         setLoading(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await api.post('/api/orders/checkout', {}, {
+            const res = await api.post('/orders/checkout', {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setOrderId(res.data.orderId);
@@ -60,7 +60,7 @@ const Checkout = () => {
                     <p className="text-gray-600 mb-8">Thank you, your order with ID #{orderId} has been successfully processed.</p>
                     
                     <a 
-                        href={`/api/orders/${orderId}/pdf`}
+                        href={`/orders/${orderId}/pdf`}
                         target="_blank"
                         rel="noreferrer"
                         className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-sm text-white bg-blue-600 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-lg font-bold focus:outline-none transition-all duration-300 mb-4"
