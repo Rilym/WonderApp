@@ -149,10 +149,10 @@ const Landing = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {featuredDestinations.length > 0 ? featuredDestinations.map(dest => (
-                            <div key={dest.id} className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer" onClick={() => window.location.href = `/destinations/${dest.id}`}>
+                            <div key={dest.id} className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer" onClick={() => window.location.href = `/destinations/https://wonderapp.onrender.com${dest.id}`}>
                                 <div className="relative h-64 overflow-hidden">
                                     <img 
-                                        src={dest.image_url ? `${dest.image_url}` : 'https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'} 
+                                        src={dest.image_url ? `https://wonderapp.onrender.com${dest.image_url}` : 'https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'} 
                                         alt={dest.name} 
                                         className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                                     />
