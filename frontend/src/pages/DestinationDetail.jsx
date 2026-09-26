@@ -157,7 +157,7 @@ const DestinationDetail = () => {
                 {destination.parsedImages.map((img, index) => (
                     <img 
                         key={index}
-                        src={img.startsWith('http') ? img : `${img}`} 
+                        src={img.startsWith('http') ? img : `https://wonderapp.onrender.com${img}`} 
                         alt={`${destination.name} ${index}`} 
                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
                     />
