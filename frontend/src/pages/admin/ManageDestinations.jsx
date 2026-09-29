@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+
 import { Plus, Edit2, Trash2, X, UploadCloud } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';

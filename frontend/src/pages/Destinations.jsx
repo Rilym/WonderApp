@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
 import { Link, useSearchParams } from 'react-router-dom';
 import { MapPin, Search, Filter } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';

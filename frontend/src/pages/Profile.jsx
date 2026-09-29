@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import axios from 'axios';
 import { Download, Package, Calendar } from 'lucide-react';
 import { Navigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import api from '../lib/api';
 
 const Profile = () => {
     const { user, loading, logout } = useContext(AuthContext);

@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import { CreditCard, ShieldCheck, CheckCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
+import api from '../lib/api';
 
 const Checkout = () => {
     const { user } = useContext(AuthContext);

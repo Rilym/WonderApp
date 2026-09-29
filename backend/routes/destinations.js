@@ -2,18 +2,23 @@ const express = require('express');
 const db = require('../db');
 const { authMiddleware, ownerMiddleware } = require('../middleware/authMiddleware');
 const multer = require('multer');
-const path = require('path');
+const {  CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
 const { body, validationResult } = require('express-validator');
-
 const router = express.Router();
 
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
 // Multer Config for multiple images
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/');
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname));
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'wanderapp_destinations',
+        allowed_formats: ['jpg', 'jpeg', 'png'],
     }
 });
 const upload = multer({ storage: storage });
@@ -98,7 +103,7 @@ router.post('/', authMiddleware, ownerMiddleware, upload.array('images', 5), asy
         // Handle multiple images
         let imagesArray = [];
         if (req.files && req.files.length > 0) {
-            imagesArray = req.files.map(file => `/uploads/${file.filename}`);
+            imagesArray = req.files.map(file => file.path);
         }
         
         const imagesJson = JSON.stringify(imagesArray);
@@ -130,7 +135,7 @@ router.put('/:id', authMiddleware, ownerMiddleware, upload.array('images', 5), a
         let params = [name, description, price, category, location, stock || 0, latitude || null, longitude || null];
 
         if (req.files && req.files.length > 0) {
-            const imagesArray = req.files.map(file => `/uploads/${file.filename}`);
+            const imagesArray = req.files.map(file => file.path);
             query += ', image_url=?, images=?';
             params.push(imagesArray[0], JSON.stringify(imagesArray));
         }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Shield, Trash2, Plus, X } from 'lucide-react';
+import api from '../lib/api';
 
 const ManageAdmins = () => {
     const [users, setUsers] = useState([]);
