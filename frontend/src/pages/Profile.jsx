@@ -102,7 +102,7 @@ const Profile = () => {
                                 <ul className="divide-y divide-gray-100">
                                     {order.items.map((item, idx) => (
                                         <li key={idx} className="py-4 flex items-center gap-4 first:pt-0 last:pb-0">
-                                            <img src={item.image_url ? `${item.image_url}` : 'https://via.placeholder.com/150'} alt={item.name} className="h-16 w-16 object-cover rounded-xl" />
+                                            <img src={item.image_url ? `https://wonderapp.onrender.com/${item.image_url}` : 'https://via.placeholder.com/150'} alt={item.name} className="h-16 w-16 object-cover rounded-xl" />
                                             <div className="flex-1">
                                                 <h4 className="font-bold text-gray-900">{item.name}</h4>
                                                 <p className="text-sm text-gray-500">
