@@ -266,25 +266,74 @@ const ManageDestinations = () => {
                                 {/* Drag & Drop Upload */}
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Destination Images (up to 5)</label>
+                                    
+                                    {/* Area Drop */}
                                     <div 
-                                        className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:bg-gray-50 transition cursor-pointer relative overflow-hidden"
+                                        className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-xl transition cursor-pointer relative overflow-hidden ${imagePreviews.length > 0 ? 'border-gray-200 bg-gray-50' : 'border-gray-300 hover:bg-gray-50'}`}
                                         onDragOver={handleDragOver}
                                         onDrop={handleDrop}
-                                        onClick={() => fileInputRef.current?.click()}
+                                        onClick={(e) => {
+                                            // Jangan memicu klik input jika yang diklik adalah tombol Hapus (X) atau gambar
+                                            if(e.target.tagName !== 'BUTTON' && e.target.tagName !== 'IMG' && !e.target.closest('button')) {
+                                                fileInputRef.current?.click();
+                                            }
+                                        }}
                                     >
                                         <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" multiple className="hidden" />
                                         
                                         {imagePreviews.length > 0 ? (
-                                            <div className="flex gap-2 overflow-x-auto w-full p-2">
+                                            <div className="flex flex-wrap gap-4 w-full p-2 justify-center">
                                                 {imagePreviews.map((preview, i) => (
-                                                    <img key={i} src={preview} alt="Preview" className="h-24 w-24 object-cover rounded shadow" />
+                                                    <div key={i} className="relative group w-24 h-24">
+                                                        {/* Gambar Utama (Bisa Diklik untuk Preview) */}
+                                                        <img 
+                                                            src={preview} 
+                                                            alt={`Preview ${i}`} 
+                                                            onClick={() => window.open(preview, '_blank')} // Buka gambar di tab baru sebagai preview
+                                                            className="w-full h-full object-cover rounded-lg shadow-sm border border-gray-200 cursor-zoom-in group-hover:opacity-75 transition-opacity" 
+                                                        />
+                                                        
+                                                        {/* Tombol Hapus (Muncul saat Hover) */}
+                                                        <button
+                                                            type="button"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation(); // Mencegah klik menyebar ke area Drop
+                                                                
+                                                                // Logika Menghapus Gambar dari State
+                                                                const newPreviews = [...imagePreviews];
+                                                                newPreviews.splice(i, 1);
+                                                                setImagePreviews(newPreviews);
+                                                                
+                                                                // Jika ini adalah file baru (belum di-upload), hapus juga dari imageFiles
+                                                                if (imageFiles.length > i) {
+                                                                    const newFiles = [...imageFiles];
+                                                                    newFiles.splice(i, 1);
+                                                                    setImageFiles(newFiles);
+                                                                }
+                                                            }}
+                                                            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-md hover:bg-red-600 z-10"
+                                                            title="Remove image"
+                                                        >
+                                                            <X className="h-3 w-3" />
+                                                        </button>
+                                                    </div>
                                                 ))}
+                                                
+                                                {/* Tombol Tambah Gambar Ekstra jika belum 5 */}
+                                                {imagePreviews.length < 5 && (
+                                                    <div 
+                                                        onClick={() => fileInputRef.current?.click()}
+                                                        className="w-24 h-24 border-2 border-dashed border-blue-300 rounded-lg flex items-center justify-center text-blue-500 hover:bg-blue-50 transition cursor-pointer"
+                                                    >
+                                                        <Plus className="h-8 w-8" />
+                                                    </div>
+                                                )}
                                             </div>
                                         ) : (
-                                            <div className="space-y-1 text-center">
+                                            <div className="space-y-1 text-center pointer-events-none">
                                                 <UploadCloud className="mx-auto h-12 w-12 text-gray-400" />
                                                 <div className="flex text-sm text-gray-600 justify-center">
-                                                    <span className="relative rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                                                    <span className="relative rounded-md font-medium text-blue-600">
                                                         Choose files
                                                     </span>
                                                     <p className="pl-1">or drag & drop</p>
