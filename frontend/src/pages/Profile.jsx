@@ -88,7 +88,7 @@ const Profile = () => {
                                         <p className="font-bold text-blue-600 text-lg">Rp {parseFloat(order.total_amount).toLocaleString('id-ID')}</p>
                                     </div>
                                     <a 
-                                        href={`/orders/${order.id}/pdf`}
+                                        href={`https://wonderapp.onrender.com/orders/${order.id}/pdf`}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="bg-blue-50 text-blue-600 p-3 rounded-xl hover:bg-blue-100 hover:-translate-y-1 transition shadow-sm"
