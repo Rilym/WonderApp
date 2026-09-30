@@ -86,9 +86,11 @@ const Navbar = () => {
                                 <ShoppingCart className="h-5 w-5" /> Cart
                             </Link>
                             <div className="border-t border-gray-100 mt-2 pt-2">
-                                <link to="/profile" onClick={closeMenu} className="px-3 py-3 flex items-center gap-2 text-gray-800 font-medium bg-gray-50 rounded-md mb-2">
+                                <div className="px-3 py-3 flex items-center gap-2 text-gray-800 font-medium bg-gray-50 rounded-md mb-2">
+                                    <link to="/profile" onClick={closeMenu} className="flex items-center gap-2">
                                     <User className="h-5 w-5 text-blue-600" /> {user.name}
                                 </link>
+                                </div>
                                 <button 
                                     onClick={() => { handleLogout(); closeMenu(); }}
                                     className="w-full text-left flex items-center gap-2 px-3 py-3 rounded-md text-base font-medium text-red-500 hover:bg-red-50 transition"
